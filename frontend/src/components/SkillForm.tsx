@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { jobRoles } from "@/data/mockData";
 import AnalysisResults, { AnalysisResponse } from "./AnalysisResults";
 
@@ -24,16 +25,17 @@ export default function SkillForm() {
   const [error, setError] = useState<string | null>(null);
   const [results, setResults] = useState<AnalysisResponse | null>(null);
   const [urlMessage, setUrlMessage] = useState<string | null>(null);
+  const searchParams = useSearchParams();
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const params = new URLSearchParams(window.location.search);
-      if (params.get("error") === "missing_skills") {
-        setUrlMessage("Please input the skills to view your Dashboard or Roadmap.");
+    if (searchParams && searchParams.get("error") === "missing_skills") {
+      setUrlMessage("Please input the skills to view your Dashboard or Roadmap.");
+      // Remove query param from URL gracefully
+      if (typeof window !== "undefined") {
         window.history.replaceState({}, "", "/skill-input");
       }
     }
-  }, []);
+  }, [searchParams]);
 
   const toggleSkill = (skill: string) => {
     setSelectedSkills((prev) =>

@@ -1,4 +1,5 @@
 import SkillForm from "@/components/SkillForm";
+import { Suspense } from "react";
 
 export const metadata = {
   title: "Skill Input — SkillForge",
@@ -17,7 +18,9 @@ export default function SkillInputPage() {
       </div>
 
       <div className="mx-auto max-w-4xl">
-        <SkillForm />
+        <Suspense fallback={<div className="h-40 w-full animate-pulse rounded-xl bg-zinc-900/60" />}>
+          <SkillForm />
+        </Suspense>
       </div>
     </div>
   );

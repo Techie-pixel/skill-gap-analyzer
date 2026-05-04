@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import { jobRoles } from "@/data/mockData";
 import AnalysisResults, { AnalysisResponse } from "./AnalysisResults";
 
@@ -26,16 +26,15 @@ export default function SkillForm() {
   const [results, setResults] = useState<AnalysisResponse | null>(null);
   const [urlMessage, setUrlMessage] = useState<string | null>(null);
   const searchParams = useSearchParams();
+  const router = useRouter();
 
   useEffect(() => {
     if (searchParams && searchParams.get("error") === "missing_skills") {
       setUrlMessage("Please input the skills to view your Dashboard or Roadmap.");
-      // Remove query param from URL gracefully
-      if (typeof window !== "undefined") {
-        window.history.replaceState({}, "", "/skill-input");
-      }
+      // Remove query param from URL gracefully using Next.js router
+      router.replace("/skill-input", { scroll: false });
     }
-  }, [searchParams]);
+  }, [searchParams, router]);
 
   const toggleSkill = (skill: string) => {
     setSelectedSkills((prev) =>

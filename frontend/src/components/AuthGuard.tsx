@@ -34,6 +34,16 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
       return;
     }
 
+    // NEW LOGIC: Prevent accessing dashboard/roadmap without skill input
+    if (user && (pathname === "/dashboard" || pathname === "/roadmap")) {
+      const hasAnalysis = sessionStorage.getItem("skillforge_analysis");
+      if (!hasAnalysis) {
+        setIsRedirecting(true);
+        router.replace("/skill-input");
+        return;
+      }
+    }
+
     setIsRedirecting(false);
   }, [user, loading, isLoginPage, isPublicRoute, router, pathname]);
 

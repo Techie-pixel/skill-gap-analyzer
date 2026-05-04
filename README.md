@@ -254,8 +254,8 @@ Start the FastAPI server:
 uvicorn main:app --reload --port 8000
 ```
 
-The backend will be live at: `http://localhost:8000`
-API docs available at: `http://localhost:8000/docs`
+The backend will be live at: `https://skill-gap-analyzer-hp2q.onrender.com`
+API docs available at: `https://skill-gap-analyzer-hp2q.onrender.com/docs`
 
 ---
 

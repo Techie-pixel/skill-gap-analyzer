@@ -4,7 +4,7 @@ import { useState } from "react";
 import { jobRoles } from "@/data/mockData";
 import AnalysisResults, { AnalysisResponse } from "./AnalysisResults";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || "https://skill-gap-analyzer-hp2q.onrender.com";
 
 const predefinedSkills = [
   "Python", "JavaScript", "TypeScript", "React", "Node.js", "SQL",

@@ -13,6 +13,7 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
   const [isRedirecting, setIsRedirecting] = useState(false);
+  const [isChecking, setIsChecking] = useState(true);
 
   const isPublicRoute = PUBLIC_ROUTES.includes(pathname);
   const isLoginPage = pathname === "/login";
@@ -34,7 +35,7 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
       return;
     }
 
-    // NEW LOGIC: Prevent accessing dashboard/roadmap without skill input
+    // Prevent accessing dashboard/roadmap without skill input
     if (user && (pathname === "/dashboard" || pathname === "/roadmap")) {
       const hasAnalysis = sessionStorage.getItem("skillforge_analysis");
       if (!hasAnalysis) {
@@ -45,10 +46,11 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
     }
 
     setIsRedirecting(false);
+    setIsChecking(false);
   }, [user, loading, isLoginPage, isPublicRoute, router, pathname]);
 
   // Show loading spinner while auth state is resolving or redirecting
-  if (loading || isRedirecting) {
+  if (loading || isRedirecting || isChecking) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-[#09090b]">
         <div className="flex flex-col items-center gap-4">

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "https://skill-gap-analyzer-hp2q.onrender.com";
 
@@ -148,6 +149,7 @@ const fallbackRoadmap: RoadmapSkill[] = [
 /*              MAIN DASHBOARD                  */
 /* ═════════════════════════════════════════════ */
 export default function DashboardPage() {
+  const router = useRouter();
   const [state, setState] = useState<DashboardState>({
     analysis: null,
     roadmap: [],
@@ -174,6 +176,11 @@ export default function DashboardPage() {
         target_role = parsed.target_role || target_role;
       }
     } catch { /* ignore */ }
+
+    if (skills.length === 0) {
+      router.push("/skill-input?error=missing_skills");
+      return;
+    }
 
     let analysis: AnalysisData | null = null;
     let roadmap: RoadmapSkill[] = [];

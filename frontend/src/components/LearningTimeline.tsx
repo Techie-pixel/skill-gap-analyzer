@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "https://skill-gap-analyzer-hp2q.onrender.com";
 
@@ -71,6 +72,7 @@ function SkeletonLoader() {
 }
 
 export default function LearningTimeline() {
+  const router = useRouter();
   const [roadmap, setRoadmap] = useState<RoadmapItem[]>([]);
   const [targetRole, setTargetRole] = useState<string>("");
   const [isLoading, setIsLoading] = useState(true);
@@ -87,12 +89,9 @@ export default function LearningTimeline() {
 
     const stored = sessionStorage.getItem("skillforge_analysis");
 
-    // No prior analysis — show sample data instantly
+    // No prior analysis — redirect to input
     if (!stored) {
-      setRoadmap(fallbackRoadmap);
-      setTargetRole("Full Stack Developer");
-      setError("Complete a skill analysis first for a personalized roadmap.");
-      setIsLoading(false);
+      router.push("/skill-input?error=missing_skills");
       return;
     }
 
@@ -100,6 +99,11 @@ export default function LearningTimeline() {
       const parsed = JSON.parse(stored);
       const skills = parsed.skills || [];
       const target_role = parsed.target_role || "Full Stack Developer";
+
+      if (skills.length === 0) {
+        router.push("/skill-input?error=missing_skills");
+        return;
+      }
 
       const res = await fetch(`${API_BASE}/learning-roadmap`, {
         method: "POST",

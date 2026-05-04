@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { jobRoles } from "@/data/mockData";
 import AnalysisResults, { AnalysisResponse } from "./AnalysisResults";
 
@@ -23,6 +23,17 @@ export default function SkillForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [results, setResults] = useState<AnalysisResponse | null>(null);
+  const [urlMessage, setUrlMessage] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("error") === "missing_skills") {
+        setUrlMessage("Please input the skills to view your Dashboard or Roadmap.");
+        window.history.replaceState({}, "", "/skill-input");
+      }
+    }
+  }, []);
 
   const toggleSkill = (skill: string) => {
     setSelectedSkills((prev) =>
@@ -119,6 +130,14 @@ export default function SkillForm() {
 
   return (
     <div className="space-y-8">
+      {urlMessage && (
+        <div className="animate-fade-in flex items-center gap-3 rounded-xl border border-amber-500/20 bg-amber-900/10 px-4 py-3">
+          <span className="text-amber-400">⚠️</span>
+          <p className="flex-1 text-sm text-amber-300">{urlMessage}</p>
+          <button onClick={() => setUrlMessage(null)} className="text-amber-400/50 hover:text-amber-400">&times;</button>
+        </div>
+      )}
+
       {/* Job Role Selection */}
       <section className="animate-fade-in-up">
         <h2 className="mb-1 text-lg font-semibold text-white">Target Job Role</h2>

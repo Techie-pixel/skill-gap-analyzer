@@ -13,12 +13,6 @@
     <a href="https://www.netlify.com/"><img src="https://img.shields.io/badge/Deployed_on-Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white" alt="Netlify" /></a>
   </p>
 
-  <p>
-    <img src="https://img.shields.io/badge/License-MIT-blue?style=flat-square" alt="MIT License" />
-    <img src="https://img.shields.io/badge/Status-Live-success?style=flat-square" alt="Status" />
-    <img src="https://img.shields.io/badge/PRs-Welcome-orange?style=flat-square" alt="PRs Welcome" />
-  </p>
-
   <br/>
 
   > **Bridge the gap between where you are and where you want to be — powered by AI.**
@@ -397,10 +391,6 @@ Found a bug or have a feature idea? [Open an issue](https://github.com/yourusern
 - Screenshots if applicable
 
 ---
-
-## 📄 License
-
-This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
 
 ---
 

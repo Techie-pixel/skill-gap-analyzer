@@ -178,7 +178,8 @@ export default function DashboardPage() {
     } catch { /* ignore */ }
 
     if (skills.length === 0) {
-      router.push("/skill-input?error=missing_skills");
+      sessionStorage.setItem("skillforge_error", "missing_skills");
+      router.push("/skill-input");
       return;
     }
 

@@ -29,10 +29,19 @@ export default function SkillForm() {
   const router = useRouter();
 
   useEffect(() => {
+    // Check URL params just in case
     if (searchParams && searchParams.get("error") === "missing_skills") {
       setUrlMessage("Please input the skills to view your Dashboard or Roadmap.");
-      // Remove query param from URL gracefully using Next.js router
       router.replace("/skill-input", { scroll: false });
+    }
+
+    // Check sessionStorage (more reliable during client-side navigation)
+    if (typeof window !== "undefined") {
+      const sessionError = sessionStorage.getItem("skillforge_error");
+      if (sessionError === "missing_skills") {
+        setUrlMessage("Please input the skills to view your Dashboard or Roadmap.");
+        sessionStorage.removeItem("skillforge_error");
+      }
     }
   }, [searchParams, router]);
 

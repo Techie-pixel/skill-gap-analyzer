@@ -91,7 +91,8 @@ export default function LearningTimeline() {
 
     // No prior analysis — redirect to input
     if (!stored) {
-      router.push("/skill-input?error=missing_skills");
+      sessionStorage.setItem("skillforge_error", "missing_skills");
+      router.push("/skill-input");
       return;
     }
 
@@ -101,7 +102,8 @@ export default function LearningTimeline() {
       const target_role = parsed.target_role || "Full Stack Developer";
 
       if (skills.length === 0) {
-        router.push("/skill-input?error=missing_skills");
+        sessionStorage.setItem("skillforge_error", "missing_skills");
+        router.push("/skill-input");
         return;
       }
 

@@ -33,7 +33,7 @@ export default function DemoVideoModal() {
             {/* Video Player */}
             <div className="aspect-video w-full overflow-hidden rounded-xl bg-zinc-900 flex items-center justify-center">
               <video 
-                src="/demorecording.mp4" 
+                src="/demo_compressed.mp4" 
                 controls 
                 autoPlay 
                 className="h-full w-full object-contain"

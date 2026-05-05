@@ -42,3 +42,5 @@ next-env.d.ts
 
 # ignore large video files
 *.mp4
+
+!demo_compressed.mp4

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import DemoVideoModal from "@/components/DemoVideoModal";
 
 export default function Home() {
   return (
@@ -44,12 +45,7 @@ export default function Home() {
                 <polyline points="12 5 19 12 12 19" />
               </svg>
             </Link>
-            <Link
-              href="/dashboard"
-              className="inline-flex items-center gap-2 rounded-xl border border-zinc-800 bg-zinc-900/60 px-8 py-3.5 text-sm font-medium text-zinc-300 transition-all duration-200 hover:border-zinc-700 hover:text-white"
-            >
-              View Demo Dashboard
-            </Link>
+            <DemoVideoModal />
           </div>
         </div>
 

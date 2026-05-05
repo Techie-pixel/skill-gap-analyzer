@@ -22,7 +22,7 @@ export default function LoginPage() {
     try {
       if (provider === 'google') await signInWithGoogle();
       if (provider === 'github') await signInWithGithub();
-      router.push("/");
+      router.push("/skill-input");
     } catch (err) {
       const msg = err instanceof Error ? err.message : "Something went wrong";
       // Clean up Firebase error messages
@@ -54,7 +54,7 @@ export default function LoginPage() {
       } else {
         await signIn(email, password);
       }
-      router.push("/");
+      router.push("/skill-input");
     } catch (err) {
       const msg = err instanceof Error ? err.message : "Something went wrong";
       // Clean up Firebase error messages

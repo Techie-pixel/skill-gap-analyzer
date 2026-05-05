@@ -87,6 +87,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const signOut = async () => {
     if (!auth) return;
+    if (typeof window !== "undefined") {
+      sessionStorage.removeItem("skillforge_analysis");
+      sessionStorage.removeItem("skillforge_error");
+    }
     await firebaseSignOut(auth);
   };
 

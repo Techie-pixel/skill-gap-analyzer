@@ -94,7 +94,12 @@ export default function SkillForm() {
     if (user) {
       try {
         const userRef = ref(db, `users/${user.uid}/skillsData`);
-        await set(userRef, payload);
+        await set(userRef, {
+          ...payload,
+          name: user.displayName || "Unknown User",
+          email: user.email || "No Email",
+          updatedAt: new Date().toISOString()
+        });
       } catch (err) {
         console.error("Error saving skills to Realtime Database", err);
       }

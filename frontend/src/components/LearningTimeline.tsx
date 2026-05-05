@@ -2,6 +2,9 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/context/AuthContext";
+import { ref, get } from "firebase/database";
+import { db } from "@/lib/firebase";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "https://skill-gap-analyzer-hp2q.onrender.com";
 
@@ -73,6 +76,7 @@ function SkeletonLoader() {
 
 export default function LearningTimeline() {
   const router = useRouter();
+  const { user, loading: authLoading } = useAuth();
   const [roadmap, setRoadmap] = useState<RoadmapItem[]>([]);
   const [targetRole, setTargetRole] = useState<string>("");
   const [isLoading, setIsLoading] = useState(true);
@@ -80,32 +84,49 @@ export default function LearningTimeline() {
   const [expandedIndex, setExpandedIndex] = useState<number>(0);
 
   useEffect(() => {
-    fetchRoadmap();
-  }, []);
+    if (!authLoading) {
+      fetchRoadmap();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [authLoading, user]);
 
   const fetchRoadmap = async () => {
     setIsLoading(true);
     setError(null);
 
-    const stored = sessionStorage.getItem("skillforge_analysis");
+    let payload = null;
 
-    // No prior analysis — redirect to input
-    if (!stored) {
+    if (user) {
+      try {
+        const userRef = ref(db, `users/${user.uid}/skillsData`);
+        const snapshot = await get(userRef);
+        if (snapshot.exists()) {
+          payload = snapshot.val();
+          sessionStorage.setItem("skillforge_analysis", JSON.stringify(payload));
+        }
+      } catch (error) {
+        console.error("Error fetching from Realtime Database", error);
+      }
+    }
+
+    if (!payload) {
+      try {
+        const stored = sessionStorage.getItem("skillforge_analysis");
+        if (stored) {
+          payload = JSON.parse(stored);
+        }
+      } catch { /* ignore */ }
+    }
+
+    if (!payload || !payload.skills || payload.skills.length === 0) {
       sessionStorage.setItem("skillforge_error", "missing_skills");
       router.push("/skill-input");
       return;
     }
 
     try {
-      const parsed = JSON.parse(stored);
-      const skills = parsed.skills || [];
-      const target_role = parsed.target_role || "Full Stack Developer";
-
-      if (skills.length === 0) {
-        sessionStorage.setItem("skillforge_error", "missing_skills");
-        router.push("/skill-input");
-        return;
-      }
+      const skills = payload.skills || [];
+      const target_role = payload.target_role || "Full Stack Developer";
 
       const res = await fetch(`${API_BASE}/learning-roadmap`, {
         method: "POST",

@@ -2,6 +2,9 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/context/AuthContext";
+import { ref, get } from "firebase/database";
+import { db } from "@/lib/firebase";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "https://skill-gap-analyzer-hp2q.onrender.com";
 
@@ -150,6 +153,7 @@ const fallbackRoadmap: RoadmapSkill[] = [
 /* ═════════════════════════════════════════════ */
 export default function DashboardPage() {
   const router = useRouter();
+  const { user, loading: authLoading } = useAuth();
   const [state, setState] = useState<DashboardState>({
     analysis: null,
     roadmap: [],
@@ -159,23 +163,45 @@ export default function DashboardPage() {
   });
 
   useEffect(() => {
-    fetchDashboardData();
-  }, []);
+    if (!authLoading) {
+      fetchDashboardData();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [authLoading, user]);
 
   const fetchDashboardData = async () => {
     setState((p) => ({ ...p, isLoading: true, error: null }));
 
     let skills: { name: string; level: number }[] = [];
     let target_role = "Full Stack Developer";
+    let payload = null;
 
-    try {
-      const stored = sessionStorage.getItem("skillforge_analysis");
-      if (stored) {
-        const parsed = JSON.parse(stored);
-        skills = parsed.skills || [];
-        target_role = parsed.target_role || target_role;
+    if (user) {
+      try {
+        const userRef = ref(db, `users/${user.uid}/skillsData`);
+        const snapshot = await get(userRef);
+        if (snapshot.exists()) {
+          payload = snapshot.val();
+          sessionStorage.setItem("skillforge_analysis", JSON.stringify(payload));
+        }
+      } catch (error) {
+        console.error("Error fetching from Realtime Database", error);
       }
-    } catch { /* ignore */ }
+    }
+
+    if (!payload) {
+      try {
+        const stored = sessionStorage.getItem("skillforge_analysis");
+        if (stored) {
+          payload = JSON.parse(stored);
+        }
+      } catch { /* ignore */ }
+    }
+
+    if (payload) {
+      skills = payload.skills || [];
+      target_role = payload.target_role || target_role;
+    }
 
     if (skills.length === 0) {
       sessionStorage.setItem("skillforge_error", "missing_skills");

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
 
@@ -86,10 +87,8 @@ export default function LoginPage() {
       <div className="relative z-10 w-full max-w-md">
         {/* Brand */}
         <div className="mb-8 flex flex-col items-center">
-          <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-teal-600/20">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#14b8a6" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-            </svg>
+          <div className="mb-4 flex h-14 w-14 items-center justify-center overflow-hidden rounded-2xl bg-teal-600/20">
+            <Image src="/logo.png" alt="SkillForge Logo" width={32} height={32} className="object-contain" />
           </div>
           <h1 className="text-2xl font-bold tracking-tight text-white">SkillForge</h1>
           <p className="mt-1 text-sm text-zinc-500">AI-Powered Career Intelligence</p>

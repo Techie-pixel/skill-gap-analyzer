@@ -4,6 +4,9 @@ import { useState, useEffect } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { jobRoles } from "@/data/mockData";
 import AnalysisResults, { AnalysisResponse } from "./AnalysisResults";
+import { useAuth } from "@/context/AuthContext";
+import { ref, set } from "firebase/database";
+import { db } from "@/lib/firebase";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "https://skill-gap-analyzer-hp2q.onrender.com";
 
@@ -27,6 +30,7 @@ export default function SkillForm() {
   const [urlMessage, setUrlMessage] = useState<string | null>(null);
   const searchParams = useSearchParams();
   const router = useRouter();
+  const { user } = useAuth();
 
   useEffect(() => {
     // Check URL params just in case
@@ -86,6 +90,15 @@ export default function SkillForm() {
 
     // Persist for roadmap page
     sessionStorage.setItem("skillforge_analysis", JSON.stringify(payload));
+
+    if (user) {
+      try {
+        const userRef = ref(db, `users/${user.uid}/skillsData`);
+        await set(userRef, payload);
+      } catch (err) {
+        console.error("Error saving skills to Realtime Database", err);
+      }
+    }
 
     try {
       const res = await fetch(`${API_BASE}/analyze-skills`, {

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
 import { useState } from "react";
@@ -76,10 +77,8 @@ export default function Sidebar() {
       <aside className="hidden lg:flex fixed left-0 top-0 z-40 h-screen w-64 flex-col border-r border-zinc-800/60 bg-zinc-950/80 backdrop-blur-xl">
         {/* Brand */}
         <div className="flex items-center gap-3 border-b border-zinc-800/60 px-6 py-5">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-teal-600/20">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#14b8a6" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-            </svg>
+          <div className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-lg bg-teal-600/20">
+            <Image src="/logo.png" alt="SkillForge Logo" width={24} height={24} className="object-contain" />
           </div>
           <div>
             <h1 className="text-sm font-bold tracking-tight text-white">SkillForge</h1>
@@ -153,10 +152,8 @@ export default function Sidebar() {
       {/* Mobile Top Header */}
       <header className="lg:hidden sticky top-0 z-30 flex w-full items-center justify-between border-b border-zinc-800/60 bg-zinc-950/80 px-4 py-3 backdrop-blur-xl">
         <div className="flex items-center gap-2">
-          <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-teal-600/20">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#14b8a6" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-            </svg>
+          <div className="flex h-7 w-7 items-center justify-center overflow-hidden rounded-lg bg-teal-600/20">
+            <Image src="/logo.png" alt="SkillForge Logo" width={20} height={20} className="object-contain" />
           </div>
           <h1 className="text-sm font-bold tracking-tight text-white">SkillForge</h1>
         </div>

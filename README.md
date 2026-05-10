@@ -410,6 +410,6 @@ Found a bug or have a feature idea? [Open an issue](https://github.com/yourusern
 
   <br/>
 
-  ⭐ **Star this repo** if SkillForge helped you on your learning journey!
+  **⭐ this repo** if SkillForge helped you on your learning journey!
 
 </div>

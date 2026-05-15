@@ -1,7 +1,7 @@
 <div align="center">
   <img src="https://img.icons8.com/fluency/256/artificial-intelligence.png" width="120" alt="SkillForge AI Logo">
 
-  <h1>🧠 SkillForge — Skill Gap Analyzer</h1>
+  <h1> SkillForge — Skill Gap Analyzer</h1>
 
   <p><strong>Next-Generation AI Career & Skill Progression Ecosystem</strong></p>
 
@@ -21,7 +21,7 @@
 
 ---
 
-## 📖 About SkillForge
+## About SkillForge
 
 **SkillForge** is a robust, enterprise-grade AI-powered web application designed to bridge the gap between a developer's current skill set and their dream job requirements. It eliminates the guesswork in career progression by providing a highly personalized, automated, and dynamic learning roadmap.
 
@@ -31,38 +31,38 @@ Whether you're a junior developer aiming for a senior role, a frontend engineer 
 
 ---
 
-## 🌟 Key Features & Ecosystem
+## Key Features & Ecosystem
 
-### 🤖 1. AI-Powered Gap Analysis
+### 1. AI-Powered Gap Analysis
 - **Intelligent Profiling:** Cross-references your current skills with the latest industry demands for your exact target role.
 - **Precision Mapping:** Identifies distinct knowledge gaps, missing tech stacks, and necessary theoretical fundamentals.
 - **Contextual Understanding:** Adapts the difficulty and scope of the roadmap based on your existing seniority level.
 - **Sub-second Generation:** Groq's ultra-fast inference ensures roadmaps are generated in real-time with zero waiting.
 
-### 🗺️ 2. Dynamic Interactive Roadmaps
+### 2. Dynamic Interactive Roadmaps
 - **Step-by-Step Curriculum:** Breaks down monumental learning tasks into digestible, daily or weekly modules.
 - **Visual Progress Tracking:** Interactive timeline components that visually reflect your upskilling journey.
 - **Adaptive Adjustments:** Allows users to mark nodes as complete, dynamically recalculating remaining effort.
 - **Priority Ordering:** Topics are ranked by importance and dependency, so you always learn in the right sequence.
 
-### 📹 3. Automated Resource Generation
+### 3. Automated Resource Generation
 - **YouTube API Integration:** Automatically fetches the highest-rated, most relevant tutorials and crash courses for every generated topic.
 - **Curated Filtering:** Avoids outdated content by prioritizing modern, well-reviewed educational materials.
 - **In-App Viewing Engine:** Seamless video playback directly within the learning dashboard — no tab-switching needed.
 
-### 📊 4. User Dashboard & Analytics
+### 4. User Dashboard & Analytics
 - **Macro Analytics:** Real-time dashboards monitoring completion percentages and remaining skill targets.
 - **Persistent State:** Cloud-synced state management allows users to pick up their learning journey exactly where they left off.
 - **Progress Visualization:** Charts and indicators to keep you motivated throughout the journey.
 
-### 🔐 5. Secure Authentication
+### 5. Secure Authentication
 - **Google OAuth & GitHub OAuth** via Firebase — fast, frictionless, and secure.
 - No raw passwords. No unnecessary data collection.
 - Session persistence across devices.
 
 ---
 
-## 🛠️ Technical Architecture & Stack
+## Technical Architecture & Stack
 
 ### Frontend Application
 
@@ -92,7 +92,7 @@ Whether you're a junior developer aiming for a senior role, a frontend engineer 
 
 ---
 
-## 🏗️ System Architecture
+## System Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────┐
@@ -119,7 +119,7 @@ Whether you're a junior developer aiming for a senior role, a frontend engineer 
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 skill-gap-analyzer/
@@ -187,16 +187,16 @@ skill-gap-analyzer/
 
 ---
 
-## 🔒 Security Posture
+## Security Posture
 
-- **🔐 Encrypted Transmission:** All client-server communication is secured via HTTPS with authenticated API routes.
-- **🛡️ OAuth 2.0 Standards:** Strict implementation of GitHub and Google login via Firebase — no raw passwords ever touch the database.
-- **🔒 Data Silos:** Firestore Security Rules ensure users can only query and mutate their own roadmap data.
-- **✅ No Sensitive Storage:** No credit cards, no passwords, no PII beyond what OAuth providers supply.
+- ** Encrypted Transmission:** All client-server communication is secured via HTTPS with authenticated API routes.
+- ** OAuth 2.0 Standards:** Strict implementation of GitHub and Google login via Firebase — no raw passwords ever touch the database.
+- ** Data Silos:** Firestore Security Rules ensure users can only query and mutate their own roadmap data.
+- ** No Sensitive Storage:** No credit cards, no passwords, no PII beyond what OAuth providers supply.
 
 ---
 
-## ⚙️ Installation & Local Setup
+## Installation & Local Setup
 
 ### Prerequisites
 
@@ -211,7 +211,7 @@ skill-gap-analyzer/
 
 ---
 
-### 🚀 Step-by-Step Setup
+### Step-by-Step Setup
 
 #### 1. Clone the Repository
 
@@ -299,7 +299,7 @@ service cloud.firestore {
 
 ---
 
-## 🔌 API Endpoints
+## API Endpoints
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
@@ -345,7 +345,7 @@ POST /analyze-skills
 
 ---
 
-## 🚀 Deployment
+## Deployment
 
 ### Frontend (Netlify)
 
@@ -367,7 +367,7 @@ POST /analyze-skills
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome and appreciated! Here's how to get involved:
 
@@ -381,7 +381,7 @@ Please follow [Conventional Commits](https://www.conventionalcommits.org/) for c
 
 ---
 
-## 🐛 Bug Reports & Feature Requests
+## Bug Reports & Feature Requests
 
 Found a bug or have a feature idea? [Open an issue](https://github.com/yourusername/skill-gap-analyzer/issues) with:
 
@@ -394,7 +394,7 @@ Found a bug or have a feature idea? [Open an issue](https://github.com/yourusern
 
 ---
 
-## 🙏 Acknowledgements
+## Acknowledgements
 
 - [Groq](https://groq.com/) — for blazing-fast LLM inference
 - [Meta AI](https://ai.meta.com/) — for the Llama 3.3 model

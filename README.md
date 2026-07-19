@@ -1,9 +1,9 @@
 <div align="center">
   <img src="https://img.icons8.com/fluency/256/artificial-intelligence.png" width="120" alt="SkillForge AI Logo">
 
-  <h1> SkillForge — Skill Gap Analyzer</h1>
+  <h1>SkillForge — Skill Gap Analyzer</h1>
 
-  <p><strong>Next-Generation AI Career & Skill Progression Ecosystem</strong></p>
+  <p><strong>AI-powered skill gap analysis and career roadmap generator</strong></p>
 
   <p>
     <a href="https://nextjs.org/"><img src="https://img.shields.io/badge/Frontend-Next.js-black?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js" /></a>
@@ -13,278 +13,200 @@
     <a href="https://www.netlify.com/"><img src="https://img.shields.io/badge/Deployed_on-Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white" alt="Netlify" /></a>
   </p>
 
-  <br/>
-
-  > **Bridge the gap between where you are and where you want to be — powered by AI.**
-
+  <p>
+    Bridge the gap between where you are and where you want to be.
+  </p>
 </div>
 
 ---
 
-## About SkillForge
+## About the project
 
-**SkillForge** is a robust, enterprise-grade AI-powered web application designed to bridge the gap between a developer's current skill set and their dream job requirements. It eliminates the guesswork in career progression by providing a highly personalized, automated, and dynamic learning roadmap.
+**SkillForge** is a full-stack web application that compares a user’s current skills with the requirements of a target role and generates a personalized learning roadmap.
 
-Powered by the lightning-fast **Groq Llama 3.3 AI Model** and engineered with a modern **Next.js frontend**, SkillForge guarantees real-time, highly accurate curriculum generation while delivering a premium user experience with fluid UI animations.
+It helps users answer three practical questions:
 
-Whether you're a junior developer aiming for a senior role, a frontend engineer pivoting to full-stack, or a software engineer targeting ML engineering — SkillForge crafts a tailored learning journey **just for you**.
+* What skills am I missing?
+* What should I learn first?
+* Which resources should I use?
 
----
-
-## Key Features & Ecosystem
-
-### 1. AI-Powered Gap Analysis
-- **Intelligent Profiling:** Cross-references your current skills with the latest industry demands for your exact target role.
-- **Precision Mapping:** Identifies distinct knowledge gaps, missing tech stacks, and necessary theoretical fundamentals.
-- **Contextual Understanding:** Adapts the difficulty and scope of the roadmap based on your existing seniority level.
-- **Sub-second Generation:** Groq's ultra-fast inference ensures roadmaps are generated in real-time with zero waiting.
-
-### 2. Dynamic Interactive Roadmaps
-- **Step-by-Step Curriculum:** Breaks down monumental learning tasks into digestible, daily or weekly modules.
-- **Visual Progress Tracking:** Interactive timeline components that visually reflect your upskilling journey.
-- **Adaptive Adjustments:** Allows users to mark nodes as complete, dynamically recalculating remaining effort.
-- **Priority Ordering:** Topics are ranked by importance and dependency, so you always learn in the right sequence.
-
-### 3. Automated Resource Generation
-- **YouTube API Integration:** Automatically fetches the highest-rated, most relevant tutorials and crash courses for every generated topic.
-- **Curated Filtering:** Avoids outdated content by prioritizing modern, well-reviewed educational materials.
-- **In-App Viewing Engine:** Seamless video playback directly within the learning dashboard — no tab-switching needed.
-
-### 4. User Dashboard & Analytics
-- **Macro Analytics:** Real-time dashboards monitoring completion percentages and remaining skill targets.
-- **Persistent State:** Cloud-synced state management allows users to pick up their learning journey exactly where they left off.
-- **Progress Visualization:** Charts and indicators to keep you motivated throughout the journey.
-
-### 5. Secure Authentication
-- **Google OAuth & GitHub OAuth** via Firebase — fast, frictionless, and secure.
-- No raw passwords. No unnecessary data collection.
-- Session persistence across devices.
+The project combines a **Next.js frontend**, a **FastAPI backend**, **Groq Llama 3.3** for roadmap generation, **YouTube resource suggestions**, and **Firebase authentication** for a smooth user experience.
 
 ---
 
-## Technical Architecture & Stack
+## Features
 
-### Frontend Application
+### Skill gap analysis
 
-| Technology | Purpose |
-|---|---|
-| **Next.js (React)** | Server-side rendering, routing, and SEO optimization |
-| **Tailwind CSS** | Utility-first responsive styling |
-| **React Context + Hooks** | Lightweight, optimized global state management |
+* Compare current skills with target job requirements
+* Identify missing technical skills and fundamentals
+* Adapt recommendations based on experience level
+* Generate results quickly using Groq
 
-### Backend Infrastructure
+### Personalized roadmap
 
-| Technology | Purpose |
-|---|---|
-| **FastAPI (Python)** | Asynchronous, high-performance REST API endpoints |
-| **Groq API (Llama-3.3-70b)** | Sub-second AI roadmap and curriculum generation |
-| **YouTube Data API v3** | Dynamic educational video resource fetching |
-| **Firebase Auth** | Secure Google & GitHub OAuth 2.0 authentication |
-| **Firebase Firestore** | Real-time NoSQL cloud database for user data |
+* Turn skill gaps into a step-by-step learning plan
+* Organize topics by priority and dependency
+* Show progress through a clear roadmap view
+* Support completion tracking for learning flow
+
+### Learning resources
+
+* Fetch relevant YouTube resources for each topic
+* Surface tutorials and crash courses alongside the roadmap
+* Keep resources tied to the current learning stage
+
+### Dashboard
+
+* View analysis results and roadmap progress in one place
+* Track completion status and remaining goals
+* Resume learning from where you left off
+
+### Authentication
+
+* Google and GitHub sign-in via Firebase
+* No password handling in the app itself
+* Session persistence across devices
+
+---
+
+## Tech stack
+
+### Frontend
+
+* **Next.js** — app routing and UI
+* **Tailwind CSS** — styling
+* **React Context / Hooks** — state management
+
+### Backend
+
+* **FastAPI** — REST API
+* **Python** — backend logic
+* **Groq API** — AI roadmap generation
+* **YouTube Data API v3** — learning resource lookup
+* **Firebase Auth** — authentication
+* **Firestore** — user data storage
 
 ### Deployment
 
-| Service | Role |
-|---|---|
-| **Netlify** | Frontend deployment with global CDN |
-| **Render** | Backend API hosting |
-| **Firebase** | Auth + Database |
+* **Netlify** — frontend hosting
+* **Render** — backend hosting
+* **Firebase** — auth and database
 
 ---
 
-## System Architecture
+## Architecture
 
-```
-┌─────────────────────────────────────────────────────────┐
-│                    USER BROWSER                         │
-│              Next.js Frontend (Netlify)                 │
-│            Tailwind CSS + Animated UI                   │
-└───────────────────────┬─────────────────────────────────┘
-                        │ HTTPS REST API
-                        ▼
-┌─────────────────────────────────────────────────────────┐
-│            FastAPI Backend (Render)                      │
-│  ┌──────────────────┐     ┌──────────────────────────┐  │
-│  │  Groq AI Engine  │     │  YouTube Data API v3     │  │
-│  │  Llama-3.3-70b   │     │  (Resource Aggregator)   │  │
-│  └──────────────────┘     └──────────────────────────┘  │
-└───────────────────────┬─────────────────────────────────┘
-                        │
-                        ▼
-┌─────────────────────────────────────────────────────────┐
-│                  Firebase Platform                      │
-│         Firebase Auth  │  Firestore Database            │
-└─────────────────────────────────────────────────────────┘
+```text
+User Browser
+   ↓
+Next.js Frontend (Netlify)
+   ↓ HTTPS REST API
+FastAPI Backend (Render)
+   ├── Groq AI Engine
+   ├── YouTube Data API
+   └── Skill processing logic
+   ↓
+Firebase
+   ├── Authentication
+   └── Firestore Database
 ```
 
 ---
 
-## Project Structure
+## Project structure
 
-```
+```text
 skill-gap-analyzer/
-│
-├── frontend/                      # Next.js application
+├── frontend/
 │   ├── src/
-│   │   ├── app/                   # App router pages
-│   │   │   ├── layout.tsx         # Root layout
-│   │   │   ├── page.tsx           # Landing page
-│   │   │   ├── globals.css        # Global styles
-│   │   │   ├── login/             # Login page
-│   │   │   ├── skill-input/       # Skill input page
-│   │   │   ├── dashboard/         # Dashboard page
-│   │   │   └── roadmap/           # Roadmap page
-│   │   ├── components/            # Reusable UI components
-│   │   │   ├── AnalysisResults.tsx
-│   │   │   ├── AuthGuard.tsx
-│   │   │   ├── LearningTimeline.tsx
-│   │   │   ├── ProgressChart.tsx
-│   │   │   ├── RoadmapSteps.tsx
-│   │   │   ├── Sidebar.tsx
-│   │   │   ├── SkillForm.tsx
-│   │   │   ├── SkillGapCards.tsx
-│   │   │   └── YoutubeResourceList.tsx
-│   │   ├── context/               # React Context providers
-│   │   │   └── AuthContext.tsx
-│   │   ├── data/                  # Mock/fallback data
-│   │   │   └── mockData.ts
-│   │   └── lib/                   # Firebase config & utilities
-│   │       └── firebase.ts
-│   ├── public/                    # Static assets
-│   ├── netlify.toml               # Netlify deployment config
-│   ├── next.config.ts             # Next.js configuration
-│   ├── package.json
-│   ├── tsconfig.json
-│   ├── postcss.config.mjs
-│   ├── eslint.config.mjs
-│   └── .env.example               # Environment template
+│   │   ├── app/
+│   │   ├── components/
+│   │   ├── context/
+│   │   ├── data/
+│   │   └── lib/
+│   ├── public/
+│   ├── netlify.toml
+│   └── .env.example
 │
-├── backend/                       # FastAPI application
-│   ├── main.py                    # Entry point & route registration
+├── backend/
+│   ├── main.py
 │   ├── models/
-│   │   ├── __init__.py
-│   │   └── schemas.py             # Pydantic request/response models
 │   ├── routes/
-│   │   ├── __init__.py
-│   │   ├── analysis.py            # AI gap analysis endpoints
-│   │   ├── dashboard.py           # Dashboard data endpoints
-│   │   ├── jobs.py                # Job roles endpoint
-│   │   ├── resources.py           # YouTube resource endpoints
-│   │   └── roadmap.py             # Roadmap generation endpoint
 │   ├── services/
-│   │   ├── __init__.py
-│   │   ├── ai_service.py          # Groq AI integration
-│   │   ├── skill_service.py       # Skill processing logic
-│   │   └── youtube_service.py     # YouTube API integration
 │   ├── data/
-│   │   └── jobs.json              # Job roles reference data
-│   ├── requirements.txt           # Python dependencies
-│   └── .env.example               # Environment template
+│   ├── requirements.txt
+│   └── .env.example
 │
-├── .gitignore
 └── README.md
 ```
 
 ---
 
-## Security Posture
-
-- ** Encrypted Transmission:** All client-server communication is secured via HTTPS with authenticated API routes.
-- ** OAuth 2.0 Standards:** Strict implementation of GitHub and Google login via Firebase — no raw passwords ever touch the database.
-- ** Data Silos:** Firestore Security Rules ensure users can only query and mutate their own roadmap data.
-- ** No Sensitive Storage:** No credit cards, no passwords, no PII beyond what OAuth providers supply.
-
----
-
-## Installation & Local Setup
+## Getting started
 
 ### Prerequisites
 
-| Requirement | Version |
-|---|---|
-| Node.js | v18.0.0 or higher |
-| Python | v3.9+ |
-| npm / yarn | Latest stable |
-| Groq API Key | [Get it here](https://console.groq.com) |
-| YouTube Data API Key | [Google Cloud Console](https://console.cloud.google.com) |
-| Firebase Project | [Firebase Console](https://console.firebase.google.com) |
+* Node.js 18+
+* Python 3.9+
+* npm or yarn
+* Groq API key
+* YouTube Data API key
+* Firebase project
 
----
-
-### Step-by-Step Setup
-
-#### 1. Clone the Repository
+### 1) Clone the repository
 
 ```bash
 git clone https://github.com/yourusername/skill-gap-analyzer.git
 cd skill-gap-analyzer
 ```
 
----
-
-#### 2. Backend Setup (FastAPI)
+### 2) Backend setup
 
 ```bash
 cd backend
-
-# Create a virtual environment
 python -m venv venv
-source venv/bin/activate        # On Windows: venv\Scripts\activate
-
-# Install dependencies
+source venv/bin/activate   # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-Create a `.env` file from the template:
+Create your environment file:
 
 ```bash
 cp .env.example .env
-# Then fill in your actual API keys
 ```
 
-Start the FastAPI server:
+Run the backend:
 
 ```bash
 uvicorn main:app --reload --port 8000
 ```
 
-The backend will be live at: `https://skill-gap-analyzer-hp2q.onrender.com`
-API docs available at: `https://skill-gap-analyzer-hp2q.onrender.com/docs`
-
----
-
-#### 3. Frontend Setup (Next.js)
+### 3) Frontend setup
 
 ```bash
 cd ../frontend
-
-# Install dependencies
 npm install
-```
-
-Create a `.env.local` file from the template:
-
-```bash
 cp .env.example .env.local
-# Then fill in your Firebase config and backend URL
-```
-
-Start the development server:
-
-```bash
 npm run dev
 ```
 
-The frontend will be live at: `http://localhost:3000`
+The frontend runs at:
+
+```bash
+http://localhost:3000
+```
 
 ---
 
-#### 4. Firebase Configuration
+## Firebase setup
 
-1. Go to [Firebase Console](https://console.firebase.google.com) and create a new project.
-2. Enable **Authentication** → Turn on **Google** and **GitHub** providers.
-3. Create a **Firestore Database** in production mode.
-4. Add the following Firestore Security Rules:
+1. Create a Firebase project.
+2. Enable **Authentication** and turn on **Google** and **GitHub** providers.
+3. Create a **Firestore Database**.
+4. Add security rules so users can only access their own data.
+
+Example rule:
 
 ```javascript
 rules_version = '2';
@@ -299,20 +221,19 @@ service cloud.firestore {
 
 ---
 
-## API Endpoints
+## API endpoints
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| `GET` | `/job-roles` | Get available job roles |
-| `POST` | `/analyze-skills` | Submit skills + target role → get AI analysis |
-| `POST` | `/roadmap` | Generate a learning roadmap |
-| `GET` | `/youtube-resources` | Fetch YouTube resources for a topic |
-| `GET` | `/dashboard` | Get dashboard analytics |
+| Method | Endpoint             | Description                                  |
+| ------ | -------------------- | -------------------------------------------- |
+| GET    | `/job-roles`         | Get available job roles                      |
+| POST   | `/analyze-skills`    | Analyze current skills against a target role |
+| POST   | `/roadmap`           | Generate a learning roadmap                  |
+| GET    | `/youtube-resources` | Fetch resources for a topic                  |
+| GET    | `/dashboard`         | Get dashboard analytics                      |
 
-### Example Request — Analyze Skills
+### Example request
 
 ```json
-POST /analyze-skills
 {
   "current_skills": ["HTML", "CSS", "JavaScript", "React"],
   "target_role": "Full Stack Engineer",
@@ -320,11 +241,11 @@ POST /analyze-skills
 }
 ```
 
-### Example Response
+### Example response
 
 ```json
 {
-  "gap_analysis": "You are missing backend, database, and DevOps fundamentals...",
+  "gap_analysis": "You are missing backend, database, and deployment fundamentals.",
   "roadmap": [
     {
       "week": 1,
@@ -347,69 +268,50 @@ POST /analyze-skills
 
 ## Deployment
 
-### Frontend (Netlify)
+### Frontend on Netlify
 
-1. Connect your GitHub repository to [Netlify](https://app.netlify.com).
-2. Set the **Base directory** to `frontend`.
-3. Build command: `npm run build`
-4. Publish directory: `.next`
-5. Install the **@netlify/plugin-nextjs** plugin (already configured in `netlify.toml`).
-6. Set all `NEXT_PUBLIC_*` environment variables in the Netlify dashboard.
+* Connect the repo to Netlify
+* Set the base directory to `frontend`
+* Build command: `npm run build`
+* Publish directory: `.next`
 
-### Backend (Render)
+### Backend on Render
 
-1. Connect your GitHub repository to [Render](https://render.com).
-2. Create a new **Web Service**.
-3. Set the **Root directory** to `backend`.
-4. Build command: `pip install -r requirements.txt`
-5. Start command: `uvicorn main:app --host 0.0.0.0 --port $PORT`
-6. Set `GROQ_API_KEY` and `YOUTUBE_API_KEY` as environment variables.
+* Connect the repo to Render
+* Set the root directory to `backend`
+* Build command: `pip install -r requirements.txt`
+* Start command:
+
+```bash
+uvicorn main:app --host 0.0.0.0 --port $PORT
+```
 
 ---
 
 ## Contributing
 
-Contributions are welcome and appreciated! Here's how to get involved:
+1. Fork the repository
+2. Create a branch
+3. Make your changes
+4. Commit with a clear message
+5. Open a pull request
 
-1. **Fork** the repository
-2. **Create** a feature branch: `git checkout -b feature/your-feature-name`
-3. **Commit** your changes: `git commit -m "feat: add your feature description"`
-4. **Push** to the branch: `git push origin feature/your-feature-name`
-5. **Open** a Pull Request
-
-Please follow [Conventional Commits](https://www.conventionalcommits.org/) for commit messages.
-
----
-
-## Bug Reports & Feature Requests
-
-Found a bug or have a feature idea? [Open an issue](https://github.com/yourusername/skill-gap-analyzer/issues) with:
-
-- A clear, descriptive title
-- Steps to reproduce (for bugs)
-- Expected vs actual behavior
-- Screenshots if applicable
-
----
+Use conventional commit messages where possible.
 
 ---
 
 ## Acknowledgements
 
-- [Groq](https://groq.com/) — for blazing-fast LLM inference
-- [Meta AI](https://ai.meta.com/) — for the Llama 3.3 model
-- [Netlify](https://www.netlify.com/) — for seamless frontend deployment
-- [Firebase](https://firebase.google.com/) — for auth and database infrastructure
-- [YouTube Data API](https://developers.google.com/youtube/v3) — for educational resource aggregation
+* Groq — AI inference
+* Meta AI — Llama model family
+* Netlify — frontend deployment
+* Firebase — authentication and database
+* YouTube Data API — learning resources
 
 ---
 
 <div align="center">
 
-  **Built with ❤️ to help developers level up their careers**
-
-  <br/>
-
-  **⭐ this repo** if SkillForge helped you on your learning journey!
+**Built to help developers and students understand their skill gaps and plan their next steps**
 
 </div>

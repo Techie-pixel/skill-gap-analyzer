@@ -8,7 +8,7 @@ from fastapi import HTTPException
 load_dotenv(override=True)
 
 GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
-GROQ_MODEL = os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile")
+GROQ_MODEL = os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
 GROQ_BASE_URL = "https://api.groq.com/openai/v1"
 
 
@@ -28,7 +28,7 @@ def generate_ai_roadmap(target_role: str, missing_skills: list[str]) -> dict:
     client = _get_client()
     # Re-read model at call time so .env changes are picked up on reload
     load_dotenv(override=True)
-    model = os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile")
+    model = os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
 
     skills_str = ", ".join(missing_skills)
     prompt = f"""You are a career development expert. Generate a learning roadmap for someone targeting the role of "{target_role}" who is missing the following skills: {skills_str}.

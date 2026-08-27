@@ -13,11 +13,7 @@ export default function Home() {
         </div>
 
         <div className="relative z-10 max-w-2xl">
-          {/* Badge */}
-          <div className="animate-fade-in mb-6 inline-flex items-center gap-2 rounded-full border border-teal-500/20 bg-teal-600/10 px-4 py-1.5">
-            <span className="h-1.5 w-1.5 rounded-full bg-teal-400 animate-pulse" />
-            <span className="text-xs font-medium text-teal-300">AI-Powered Career Intelligence</span>
-          </div>
+
 
           <h1 className="animate-fade-in-up text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
             Map Your Skills.
